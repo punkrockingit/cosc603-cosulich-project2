@@ -8,8 +8,6 @@ public class CardCell extends Cell {
     
     /** The type. */
     private int type;
-	/** The available. */
-	private boolean available = true;
 	/**
      * Instantiates a new card cell.
      *

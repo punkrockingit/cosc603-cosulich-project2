@@ -6,9 +6,6 @@ package edu.towson.cis.cosc603.project2.monopoly;
  */
 public class GoCell extends Cell {
 	
-	/** The available. */
-	private boolean available = true;
-
 	/**
 	 * Instantiates a new go cell.
 	 */

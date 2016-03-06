@@ -79,7 +79,7 @@ public abstract class Cell {
 	 *
 	 * @param owner the new owner
 	 */
-	public void setOwner(Player owner) {
+	public void setOwner(Player owner) { 
 		this.theOwner = owner;
 	}
     
