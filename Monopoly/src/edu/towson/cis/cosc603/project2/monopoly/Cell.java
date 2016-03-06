@@ -4,7 +4,7 @@ package edu.towson.cis.cosc603.project2.monopoly;
 /**
  * The Class Cell.
  */
-public abstract class Cell {
+public abstract class Cell implements IOwnable {
 	
 	/** The name. */
 	private String name;
@@ -15,52 +15,48 @@ public abstract class Cell {
 	/** The available. */
 	private boolean available = true;
 
-	/**
-	 * Gets the name.
-	 *
-	 * @return the name
+	/* (non-Javadoc)
+	 * @see edu.towson.cis.cosc603.project2.monopoly.IOwnable#getName()
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
 
-	/**
-	 * Gets the owner.
-	 *
-	 * @return the owner
+	/* (non-Javadoc)
+	 * @see edu.towson.cis.cosc603.project2.monopoly.IOwnable#getOwner()
 	 */
+	@Override
 	public Player getOwner() {
 		return theOwner;
 	}
 	
-	/**
-	 * Gets the price.
-	 *
-	 * @return the price
+	/* (non-Javadoc)
+	 * @see edu.towson.cis.cosc603.project2.monopoly.IOwnable#getPrice()
 	 */
+	@Override
 	public int getPrice() {
 		return 0;
 	}
 
-	/**
-	 * Checks if is available.
-	 *
-	 * @return true, if is available
+	/* (non-Javadoc)
+	 * @see edu.towson.cis.cosc603.project2.monopoly.IOwnable#isAvailable()
 	 */
+	@Override
 	public boolean isAvailable() {
 		return available;
 	}
 	
-	/**
-	 * Play action.
+	/* (non-Javadoc)
+	 * @see edu.towson.cis.cosc603.project2.monopoly.IOwnable#playAction()
 	 */
+	@Override
 	public abstract void playAction();
 
-	/**
-	 * Sets the available.
-	 *
-	 * @param available the new available
+	/* (non-Javadoc)
+	 * @see edu.towson.cis.cosc603.project2.monopoly.IOwnable#setAvailable(boolean)
 	 */
+	@Override
 	public void setAvailable(boolean available) {
 		this.available = available;
 	}
@@ -74,11 +70,10 @@ public abstract class Cell {
 		this.name = name;
 	}
 
-	/**
-	 * Sets the owner.
-	 *
-	 * @param owner the new owner
+	/* (non-Javadoc)
+	 * @see edu.towson.cis.cosc603.project2.monopoly.IOwnable#setOwner(edu.towson.cis.cosc603.project2.monopoly.Player)
 	 */
+	@Override
 	public void setOwner(Player owner) { 
 		this.theOwner = owner;
 	}
@@ -86,7 +81,11 @@ public abstract class Cell {
     /* (non-Javadoc)
      * @see java.lang.Object#toString()
      */
-    public String toString() {
+    /* (non-Javadoc)
+	 * @see edu.towson.cis.cosc603.project2.monopoly.IOwnable#toString()
+	 */
+    @Override
+	public String toString() {
         return name;
     }
 }
