@@ -13,7 +13,7 @@ public abstract class Cell {
 	private String name;
 	
 	/** The owner. */
-	protected Player owner;
+	protected Player theOwner;
 
 	/**
 	 * Gets the name.
@@ -30,7 +30,7 @@ public abstract class Cell {
 	 * @return the owner
 	 */
 	public Player getOwner() {
-		return owner;
+		return theOwner;
 	}
 	
 	/**
@@ -80,7 +80,7 @@ public abstract class Cell {
 	 * @param owner the new owner
 	 */
 	public void setOwner(Player owner) {
-		this.owner = owner;
+		this.theOwner = owner;
 	}
     
     /* (non-Javadoc)
