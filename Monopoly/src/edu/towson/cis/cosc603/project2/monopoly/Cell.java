@@ -6,14 +6,14 @@ package edu.towson.cis.cosc603.project2.monopoly;
  */
 public abstract class Cell {
 	
-	/** The available. */
-	private boolean available = true;
-	
 	/** The name. */
 	private String name;
 	
 	/** The owner. */
 	protected Player theOwner;
+
+	/** The available. */
+	private boolean available = true;
 
 	/**
 	 * Gets the name.

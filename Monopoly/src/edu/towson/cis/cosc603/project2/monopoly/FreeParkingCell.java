@@ -6,6 +6,9 @@ package edu.towson.cis.cosc603.project2.monopoly;
  */
 public class FreeParkingCell extends Cell {
 
+	/** The available. */
+	private boolean available = true;
+
 	/**
 	 * Instantiates a new free parking cell.
 	 */

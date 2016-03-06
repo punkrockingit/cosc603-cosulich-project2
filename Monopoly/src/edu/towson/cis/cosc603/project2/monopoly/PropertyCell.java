@@ -21,6 +21,9 @@ public class PropertyCell extends Cell {
 	/** The sell price. */
 	private int sellPrice;
 
+	/** The available. */
+	private boolean available = true;
+
 	/**
 	 * Gets the color group.
 	 *
