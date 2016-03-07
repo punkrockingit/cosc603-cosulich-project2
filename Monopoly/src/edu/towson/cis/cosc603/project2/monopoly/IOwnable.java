@@ -32,8 +32,10 @@ public interface IOwnable {
 
 	/**
 	 * Play action.
+	 * @param msg TODO
+	 * @return TODO
 	 */
-	void playAction();
+	Boolean playAction(String msg);
 
 	/**
 	 * Sets the available.

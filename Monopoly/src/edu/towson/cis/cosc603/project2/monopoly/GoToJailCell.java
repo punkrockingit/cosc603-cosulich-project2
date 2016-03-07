@@ -16,9 +16,14 @@ public class GoToJailCell extends Cell {
 	/* (non-Javadoc)
 	 * @see edu.towson.cis.cosc442.project1.monopoly.Cell#playAction()
 	 */
-	public void playAction() {
+	public Boolean playAction(String msg) {
 		Player currentPlayer = GameMaster.instance().getCurrentPlayer();
 		GameMaster.instance().getGameBoard().queryCell("Jail");
 		GameMaster.instance().sendToJail(currentPlayer);
+    	if (msg != ""){
+    		return true;
+    	 } else {
+    		 return false; 
+    	 }
 	}
 }

@@ -52,7 +52,7 @@ public class RailRoadCell extends Cell {
 	/* (non-Javadoc)
 	 * @see edu.towson.cis.cosc442.project1.monopoly.Cell#playAction()
 	 */
-	public void playAction() {
+	public Boolean playAction(String msg) {
 		Player currentPlayer = null;
 		if(!isAvailable()) {
 			currentPlayer = GameMaster.instance().getCurrentPlayer();
@@ -60,5 +60,10 @@ public class RailRoadCell extends Cell {
 				currentPlayer.payRentTo(theOwner, getRent());
 			}
 		}
+	    	if (msg != ""){
+	    		return true;
+	    	 } else {
+	    		 return false; 
+	    	 }
 	}
 }

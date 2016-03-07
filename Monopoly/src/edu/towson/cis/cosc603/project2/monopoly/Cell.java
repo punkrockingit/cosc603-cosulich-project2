@@ -51,7 +51,7 @@ public abstract class Cell implements IOwnable {
 	 * @see edu.towson.cis.cosc603.project2.monopoly.IOwnable#playAction()
 	 */
 	@Override
-	public abstract void playAction();
+	public abstract Boolean playAction(String msg);
 
 	/* (non-Javadoc)
 	 * @see edu.towson.cis.cosc603.project2.monopoly.IOwnable#setAvailable(boolean)
