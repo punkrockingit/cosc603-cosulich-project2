@@ -9,18 +9,15 @@ import java.util.Hashtable;
  */
 public class GameBoard {
 
+	private GameBoardProduct2 gameBoardProduct2 = new GameBoardProduct2();
+
+	private GameBoardProduct gameBoardProduct = new GameBoardProduct();
+
 	/** The cells. */
 	private ArrayList<Cell> cells = new ArrayList<Cell>();
     
     /** The chance cards. */
     private ArrayList<Card> chanceCards = new ArrayList<Card>();
-	//the key of colorGroups is the name of the color group.
-	/** The color groups. */
-	private Hashtable<String, Integer> colorGroups = new Hashtable<String, Integer>();
-	
-	/** The community chest cards. */
-	private ArrayList<Card> communityChestCards = new ArrayList<Card>();
-	
 	/**
 	 * Instantiates a new game board.
 	 */
@@ -35,12 +32,19 @@ public class GameBoard {
      * @param card the card
      */
     public void addCard(Card card) {
-        if(card.getCardType() == Card.TYPE_CC) {
-            communityChestCards.add(card);
+        chanceCards(card);
+		if(card.getCardType() == Card.TYPE_CC) {
+            gameBoardProduct2.getCommunityChestCards().add(card);
         } else {
-            chanceCards.add(card);
         }
     }
+
+	private void chanceCards(Card card) {
+		if (card.getCardType() == Card.TYPE_CC) {
+		} else {
+			chanceCards.add(card);
+		}
+	}
 	
 	/**
 	 * Adds the cell.
@@ -57,10 +61,7 @@ public class GameBoard {
 	 * @param cell the cell
 	 */
 	public void addCell(PropertyCell cell) {
-		String colorGroup = cell.getColorGroup();
-		int propertyNumber = getPropertyNumberForColor(colorGroup);
-		colorGroups.put(colorGroup, new Integer(propertyNumber + 1));
-        cells.add(cell);
+		gameBoardProduct.addCell(cell, cells);
 	}
 
     /**
@@ -69,10 +70,7 @@ public class GameBoard {
      * @return the card
      */
     public Card drawCCCard() {
-        Card card = (Card)communityChestCards.get(0);
-        communityChestCards.remove(0);
-        addCard(card);
-        return card;
+        return gameBoardProduct2.drawCCCard(this);
     }
 
     /**
@@ -113,20 +111,7 @@ public class GameBoard {
 	 * @return the properties in monopoly
 	 */
 	public PropertyCell[] getPropertiesInMonopoly(String color) {
-		PropertyCell[] monopolyCells = 
-			new PropertyCell[getPropertyNumberForColor(color)];
-		int counter = 0;
-		for (int i = 0; i < getCellNumber(); i++) {
-			IOwnable c = getCell(i);
-			if(c instanceof PropertyCell) {
-				PropertyCell pc = (PropertyCell)c;
-				if(pc.getColorGroup().equals(color)) {
-					monopolyCells[counter] = pc;
-					counter++;
-				}
-			}
-		}
-		return monopolyCells;
+		return gameBoardProduct.getPropertiesInMonopoly(color, this);
 	}
 	
 	/**
@@ -136,11 +121,7 @@ public class GameBoard {
 	 * @return the property number for color
 	 */
 	public int getPropertyNumberForColor(String name) {
-		Integer number = (Integer)colorGroups.get(name);
-		if(number != null) {
-			return number.intValue();
-		}
-		return 0;
+		return gameBoardProduct.getPropertyNumberForColor(name);
 	}
 
 	/**
@@ -179,6 +160,6 @@ public class GameBoard {
      * Removes the cards.
      */
     public void removeCards() {
-        communityChestCards.clear();
+        gameBoardProduct2.removeCards();
     }
 }

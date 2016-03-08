@@ -169,7 +169,7 @@ public class GameMaster {
         if(deal != null) {
             RespondDialog rDialog = gui.openRespondDialog(deal);
             if(rDialog.getResponse()) {
-                completeTrade(deal);
+                deal.completeTrade(gameBoard, this);
                 updateGUI();
             }
         }
@@ -181,10 +181,7 @@ public class GameMaster {
      * @param deal the deal
      */
     public void completeTrade(TradeDeal deal) {
-        Player seller = getPlayer(deal.getPlayerIndex());
-        Cell property = gameBoard.queryCell(deal.getPropertyName());
-        seller.sellProperty(property, deal.getAmount());
-        getCurrentPlayer().buyProperty(property, deal.getAmount());
+        deal.completeTrade(gameBoard, this);
     }
 
     /**
